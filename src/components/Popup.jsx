@@ -33,14 +33,14 @@ const Popup = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div className="flex justify-between items-center mb-2">
-                        <h3 className="text-xl font-bold">How can I help you?</h3>
+                        <h3 className="text-xl font-bold">How can we help you?</h3>
                         <button onClick={closePopup} className="text-white text-2xl font-bold leading-none">&times;</button>
                     </div>
                     <p className="text-sm mb-4">
-                        I'm here to build your dream website or application. Let's start a conversation!
+                        We're here to build your dream website or application. Let's start a conversation!
                     </p>
                     <a href="/contact" className="w-full block text-center py-2 px-4 bg-gray-800 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
-                        Contact Me
+                        Contact Us
                     </a>
                 </motion.div>
             )}

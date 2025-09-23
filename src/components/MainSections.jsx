@@ -16,7 +16,7 @@ function MainSections() {
             </div>
           </Link>
           <p className="text-gray-200">
-            <span className="text-fuchsia-500 font-semibold">Crafweb</span> is a freelance web development platform focused on crafting dynamic and scalable digital solutions. We specialize in MERN Stack, PHP, and custom business applications to help your ideas thrive online.
+            <span className="text-fuchsia-500 font-semibold">Crafweb</span> is a freelance web development platform focused on crafting dynamic and scalable digital solutions. We specialize in MERN Stack, Javascript , PHP, and custom business applications to help your ideas thrive online.
           </p>
         </div>
 

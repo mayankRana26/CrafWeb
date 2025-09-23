@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// अपनी इमेजेस को यहाँ इंपोर्ट करें
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -18,14 +16,17 @@ const itemVariants = {
   visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
 };
 
-function WhyChooseUs() {
-  const handleCardClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.8, delay: 0.5 } },
+};
 
+const contentVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } },
+};
+
+function WhyChooseUs() {
   return (
     <section className="bg-gray-900 text-white py-16 px-8">
       <div className="container mx-auto">
@@ -48,47 +49,65 @@ function WhyChooseUs() {
         >
           {/* Expertise Card */}
           <motion.div 
-            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px] cursor-pointer"
+            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px]"
             variants={itemVariants}
             whileHover={{ y: -10, scale: 1.05 }}
-            onClick={handleCardClick}
+            whileTap={{ scale: 0.95 }}
           >
-            <img src="/technical-experties.png" alt="Technical Expertise" className="h-80 w-90 object-cover rounded-lg mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Technical Expertise</h3>
-            <p className="text-gray-400">
-              {/* BADLAV YAHAN HAI */}
-              We specialize in the MERN Stack and deliver high-quality, scalable code for your web and desktop applications.
-            </p>
+            <motion.img 
+                src="/technical-experties.png" 
+                alt="Technical Expertise" 
+                className="h-auto w-full max-h-80 object-cover rounded-lg mb-4"
+                variants={imageVariants}
+            />
+            <motion.div variants={contentVariants}>
+                <h3 className="text-2xl font-bold mb-2">Technical Expertise</h3>
+                <p className="text-gray-400">
+                  We specialize in the MERN Stack and deliver high-quality, scalable code for your web and desktop applications.
+                </p>
+            </motion.div>
           </motion.div>
           
           {/* Quality Card */}
           <motion.div 
-            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px] cursor-pointer"
+            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px]"
             variants={itemVariants}
             whileHover={{ y: -10, scale: 1.05 }}
-            onClick={handleCardClick}
+            whileTap={{ scale: 0.95 }}
           >
-            <img src="/quality-reliability.png" alt="Quality & Reliability" className="h-80 w-90 object-cover rounded-lg mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Quality & Reliability</h3>
-            <p className="text-gray-400">
-              {/* BADLAV YAHAN HAI */}
-              We handle every project with precision and a commitment to delivering a polished, bug-free final product on time.
-            </p>
+            <motion.img 
+                src="/quality-reliability.png" 
+                alt="Quality & Reliability" 
+                className="h-auto w-full max-h-80 object-cover rounded-lg mb-4" 
+                variants={imageVariants}
+            />
+            <motion.div variants={contentVariants}>
+                <h3 className="text-2xl font-bold mb-2">Quality & Reliability</h3>
+                <p className="text-gray-400">
+                  We handle every project with precision and a commitment to delivering a polished, bug-free final product on time.
+                </p>
+            </motion.div>
           </motion.div>
 
           {/* Support Card */}
           <motion.div 
-            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px] cursor-pointer"
+            className="p-8 bg-gray-800 rounded-lg shadow-lg flex flex-col items-center min-h-[400px]"
             variants={itemVariants}
             whileHover={{ y: -10, scale: 1.05 }}
-            onClick={handleCardClick}
+            whileTap={{ scale: 0.95 }}
           >
-            <img src="/dedicated-support.png" alt="Dedicated Support" className="h-80 w-90 object-cover rounded-lg mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Dedicated Support</h3>
-            <p className="text-gray-400">
-              {/* BADLAV YAHAN HAI */}
-              We offer ongoing support and clear communication to ensure your project's long-term success and your complete satisfaction.
-            </p>
+            <motion.img 
+                src="/dedicated-support.png" 
+                alt="Dedicated Support" 
+                className="h-auto w-full max-h-80 object-cover rounded-lg mb-4" 
+                variants={imageVariants}
+            />
+            <motion.div variants={contentVariants}>
+                <h3 className="text-2xl font-bold mb-2">Dedicated Support</h3>
+                <p className="text-gray-400">
+                  We offer ongoing support and clear communication to ensure your project's long-term success and your complete satisfaction.
+                </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

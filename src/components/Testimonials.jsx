@@ -6,21 +6,21 @@ import '@splidejs/react-splide/css';
 
 const testimonials = [
     {
-        review: "Mayank delivered a highly professional yoga website that exceeded our expectations. His attention to detail and creative solutions were outstanding. Highly recommended!",
+        review: "CrafWeb delivered a highly professional yoga website that exceeded our expectations. His attention to detail and creative solutions were outstanding. Highly recommended!",
         name: "Rishav Rana",
         website: "www.divinekalptaru.com",
         image: "/client-rishav.jpg",
         rating: 5,
     },
     {
-        review: "Working with Mayank was a great experience. He understood our complex requirements perfectly and built a robust application on time. His MERN stack expertise is top-notch.",
-        name: "Priya Singh",
-        website: "rksaloon.in",
+        review: "Working with CrafWeb was a great experience. They understood our complex requirements perfectly and built a robust application on time. Their MERN stack expertise is top-notch.",
+        name: "Mohit ",
+        website: "spotify-clone-otux.onrender.com",
         image: "/mohit.jpg",
         rating: 5,
     },
     {
-        review: "The portfolio website Mayank built for me is amazing! It’s clean, fast, and beautifully designed. He made the entire process seamless and fun.",
+        review: "The portfolio website CrafWeb built for me is amazing! It’s clean, fast, and beautifully designed. They made the entire process seamless and fun.",
         name: "Mayank Rana",
         website: "portfolio-mayank-1.netlify.app",
         image: "/client-mayank.png",
@@ -86,10 +86,8 @@ function Testimonials() {
                                             <img
                                                 src={testimonial.image}
                                                 alt={testimonial.name}
-                                                // इमेज की चौड़ाई और ऊंचाई बढ़ाई गई
                                                 className="w-40 h-40 object-cover rounded-full border-2 border-cyan-400 mb-4"
                                             />
-                                            {/* नाम और वेबसाइट के टेक्स्ट का साइज़ बढ़ाया गया */}
                                             <p className="text-cyan-400 font-bold text-xl">{testimonial.name}</p>
                                             <div className="flex text-yellow-400 space-x-1 mt-2 text-xl">
                                                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -106,7 +104,6 @@ function Testimonials() {
                                             </a>
                                         </div>
 
-                                        {/* रिव्यू टेक्स्ट का साइज़ बढ़ाया गया */}
                                         <p className="text-gray-300 text-xl italic text-center md:text-left flex-grow">
                                             "{testimonial.review}"
                                         </p>

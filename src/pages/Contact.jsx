@@ -93,10 +93,10 @@ function Contact() {
         
         {/* Social & Direct Contact Links Section */}
         <motion.div className="text-center" variants={fadeIn}>
-          <motion.p className="text-gray-400 mb-4">Or connect with me directly on:</motion.p>
+          <motion.p className="text-gray-400 mb-4">Or connect with Us directly on :</motion.p>
           <motion.div className="flex justify-center space-x-6" variants={stagger}>
             <motion.a 
-              href="https://www.instagram.com/devnity.1"
+              href="https://www.instagram.com/crafweb.1"
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-cyan-500 hover:text-cyan-400 transition-colors text-xl flex items-center space-x-2"
@@ -120,7 +120,7 @@ function Contact() {
               <span>WhatsApp</span>
             </motion.a>
             <motion.a 
-              href="mailto:devnity.sites123@gmail.com"
+              href="mailto:crafweb.sites@gmail.com"
               className="text-cyan-500 hover:text-cyan-400 transition-colors text-xl flex items-center space-x-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

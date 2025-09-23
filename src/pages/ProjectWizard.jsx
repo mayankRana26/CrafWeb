@@ -97,11 +97,11 @@ function ProjectWizard() {
         return (
           <motion.div key="step3" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="text-center">
             <h3 className="text-3xl font-bold mb-6">Almost done!</h3>
-            <p className="text-lg text-gray-400 mb-6">Tell me about your project and contact details.</p>
+            <p className="text-lg text-gray-400 mb-6">Tell us about your project and contact details.</p>
             <form onSubmit={handleSubmit} className="space-y-4 text-left">
               <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
               <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
-              <textarea name="message" placeholder="Tell me more about your project..." value={formData.message} onChange={handleChange} rows="4" className="w-full bg-gray-800 rounded-lg p-3" required></textarea>
+              <textarea name="message" placeholder="Tell us more about your project..." value={formData.message} onChange={handleChange} rows="4" className="w-full bg-gray-800 rounded-lg p-3" required></textarea>
               <motion.button type="submit" className="w-full py-3 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 Submit Brief <FaArrowRight className="inline ml-2" />
               </motion.button>
@@ -114,7 +114,7 @@ function ProjectWizard() {
           <motion.div key="step4" variants={stepVariants} initial="initial" animate="animate" className="text-center">
             <h3 className="text-3xl font-bold mb-6">Thanks for your message!</h3>
             <p className="text-lg text-gray-400">
-              I'll review your project brief and get back to you within 24 hours.
+              We'll review your project brief and get back to you within 24 hours.
             </p>
           </motion.div>
         );

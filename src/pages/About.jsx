@@ -31,17 +31,19 @@ function About() {
     <motion.section
       className="bg-gray-900 text-white py-20 px-8 min-h-screen"
       initial="hidden"
-      animate="visible"
+      whileInView="visible" // Using whileInView for scroll-based animation
+      viewport={{ once: true, amount: 0.5 }}
       variants={sectionVariants}
     >
       <div className="container mx-auto">
         <motion.h2
           className="text-4xl font-bold text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8 }}
         >
-          About Me
+          About Us
         </motion.h2>
         <div className="flex flex-col md:flex-row items-center md:space-x-12">
           <div className="md:w-1/2 mb-8 md:mb-0">
@@ -55,7 +57,13 @@ function About() {
               We believe in a project-first approach to learning—building, refining, and then building more. This mindset helps us not just learn, but truly master new technologies. We're driven by a business mindset, always looking for opportunities to create valuable solutions for clients.
             </motion.p>
           </div>
-          <motion.div className="md:w-1/2 grid grid-cols-2 gap-6 text-center" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.2 } } }}>
+          <motion.div 
+            className="md:w-1/2 grid grid-cols-2 gap-6 text-center" 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+          >
             <motion.div className="bg-gray-700 p-6 rounded-lg shadow-lg" variants={cardVariants} whileHover={{ y: -10 }}>
               <h3 className="text-xl font-bold mb-2">Tech Stack</h3>
               <p className="text-gray-300">React, Node.js, MERN Stack, Electron, Tailwind, Wordpress, PHP</p>

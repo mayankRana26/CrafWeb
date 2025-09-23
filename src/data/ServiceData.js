@@ -43,10 +43,5 @@ export const services = [
     image: "/business-support.png",
     description: "we develop software and digital tools that help streamline business operations, improve efficiency, and enhance user experience.",
   },
-  {
-    id: "documentation",
-    title: "Documentation",
-    image: "/documentation.png",
-    description: "Clear and concise technical documentation is key to a successful project. we provide professional technical writing and documentation services.",
-  }
+
 ];

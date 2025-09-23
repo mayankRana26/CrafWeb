@@ -5,6 +5,7 @@ import Testimonials from '../components/Testimonials';
 import Popup from '../components/Popup';
 import WhyChooseUs from '../components/WhyChooseUs';
 import ScrollToTopArrow from '../components/ScrollToTopArrow';
+import Milestones from '../components/Milestones';
 
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
       <Hero />
       <WhyChooseUs />
       <Testimonials />
-      {/* <MainSections /> यहाँ से भी हटा दें */}
+     <Milestones />
       <Popup />
       <ScrollToTopArrow />
     </>

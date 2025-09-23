@@ -32,7 +32,7 @@ const projectsData = [
   },
   {
     title: "Portfolio",
-    description: "My personal brand website showcasing my skills, projects, and freelancing services.",
+    description: " Apersonal brand website showcasing skills, projects, and freelancing services.",
     tech: ["React", "Vite", "Tailwind CSS"],
     imageUrl: "/portfolio-polished.png",
     liveLink: "https://portfolio-mayank-1.netlify.app",

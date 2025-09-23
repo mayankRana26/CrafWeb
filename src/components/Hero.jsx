@@ -31,7 +31,7 @@ function Hero() {
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/video-bg.mp4" type="video/mp4" />
-        {/* आप यहाँ अन्य फॉर्मेट भी जोड़ सकते हैं, जैसे:
+        {/* 
         <source src="/your-video.webm" type="video/webm" />
         */}
         Your browser does not support the video.
@@ -59,7 +59,7 @@ function Hero() {
             className="text-lg text-gray-200 mb-8"
             variants={itemVariants}
           >
-            MERN Stack, Wordpress, PHP & Business Solutions For A Digital-First World
+            MERN Stack, Wordpress, Javascript, PHP & Business Solutions For A Digital-First World
           </motion.p>
           <motion.div
             className="flex justify-center md:justify-start space-x-4"
@@ -86,7 +86,7 @@ function Hero() {
 
         <div className="md:w-1/2 flex justify-center md:justify-end md:pl-16 mt-8 md:mt-0">
           <motion.div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-cyan-500 hover:border-cyan-400 transition-colors duration-300"
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-green-500 hover:border-cyan-400 transition-colors duration-300"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{

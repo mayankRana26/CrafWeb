@@ -20,21 +20,21 @@ const projectsData = [
     title: "Real-time MERN Chat App",
     description: "A full-stack chat application with real-time messaging, user authentication, and a clean UI.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Socket.IO"],
-    imageUrl: "../public/Dochat-polished.png",
+    imageUrl: "/Dochat-polished.png",
     liveLink: "https://dochat-production.onrender.com",
   },
   {
     title: "Spotify Clone",
     description: "A clone of the Spotify web player with real-time chatting, built with React, Vite, Tailwind CSS and socket.io.",
     tech: ["React", "Vite", "Tailwind CSS", "GSAP","socket.io"],
-    imageUrl: "../public/spotify-polished.png",
+    imageUrl: "/spotify-polished.png",
     liveLink: "https://spotify-clone-otux.onrender.com",
   },
   {
     title: "Portfolio",
     description: "My personal brand website showcasing my skills, projects, and freelancing services.",
     tech: ["React", "Vite", "Tailwind CSS"],
-    imageUrl: "../public/portfolio-polished.png",
+    imageUrl: "/portfolio-polished.png",
     liveLink: "https://portfolio-mayank-1.netlify.app",
   }
 ];

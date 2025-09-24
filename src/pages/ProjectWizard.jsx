@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+
+import emailjs from '@emailjs/browser';
 
 const stepVariants = {
   initial: { opacity: 0, x: 200 },
@@ -20,6 +22,11 @@ function ProjectWizard() {
     message: ''
   });
 
+  // EmailJS ko initialize karna
+  useEffect(() => {
+    emailjs.init("-i8foRykP2f1ROml4");
+  }, []);
+
   const handleNext = () => { setStep(step + 1); };
   const handlePrev = () => { setStep(step - 1); };
   const handleChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }); };
@@ -35,9 +42,22 @@ function ProjectWizard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Netlify forms will handle the submission
-    // You can add a success message or redirect here
-    setStep(4);
+
+    const serviceID = 'service_ib32gps';
+    const templateID = 'template_noxxqzq';
+    
+    const finalData = {
+      ...formData,
+      projectType: formData.projectType === 'Other' ? formData.otherProjectType : formData.projectType,
+      features: formData.features.includes('Other') ? [...formData.features, formData.otherFeatures] : formData.features.join(', '),
+    };
+    
+    emailjs.send(serviceID, templateID, finalData)
+      .then((response) => {
+        setStep(4);
+      }, (error) => {
+        alert('Something went wrong. Please try again.');
+      });
   };
 
   const renderStep = () => {
@@ -82,15 +102,7 @@ function ProjectWizard() {
           <motion.div key="step3" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="text-center">
             <h3 className="text-3xl font-bold mb-6">Almost done!</h3>
             <p className="text-lg text-gray-400 mb-6">Tell us about your project and contact details.</p>
-            <form name="project-wizard" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit} className="space-y-4 text-left">
-              {/* Netlify Hidden Fields */}
-              <input type="hidden" name="form-name" value="project-wizard" />
-              <input type="hidden" name="projectType" value={formData.projectType} />
-              <input type="hidden" name="features" value={formData.features.join(', ')} />
-              <div hidden>
-                <label>Don't fill this out: <input name="bot-field" /></label>
-              </div>
-
+            <form onSubmit={handleSubmit} className="space-y-4 text-left">
               <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
               <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
               <textarea name="message" placeholder="Tell us more about your project..." value={formData.message} onChange={handleChange} rows="4" className="w-full bg-gray-800 rounded-lg p-3" required></textarea>

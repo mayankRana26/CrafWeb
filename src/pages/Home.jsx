@@ -13,7 +13,7 @@ function Home() {
       <Hero />
       <WhyChooseUs />
       <Testimonials />
-     <Milestones />
+      <Milestones />
       <Popup />
       <ScrollToTopArrow />
     </>

@@ -39,11 +39,19 @@ function Contact() {
         
         {/* Contact Form Section */}
         <motion.form 
-          action={"https://formspree.io/f/myzngpwr"} 
+          name="contact" // Netlify ko form ka naam batane ke liye
           method='POST' 
+          data-netlify="true" // Yeh attribute zaroori hai
+          data-netlify-honeypot="bot-field" // Spam protection
           className="space-y-6 mb-12"
           variants={stagger}
         >
+          {/* Honeypot field (hidden) */}
+          <div className="hidden">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </div>
+          <input type="hidden" name="form-name" value="contact" />
+          
           <motion.div variants={fadeIn}>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300">
               Name

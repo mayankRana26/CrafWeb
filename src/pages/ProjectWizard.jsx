@@ -35,25 +35,9 @@ function ProjectWizard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const finalData = {
-      ...formData,
-      projectType: formData.projectType === 'Other' ? formData.otherProjectType : formData.projectType,
-      features: formData.features.includes('Other') ? [...formData.features, formData.otherFeatures] : formData.features,
-    };
-    
-    const formspreeUrl = "https://formspree.io/f/myzngpwr";
-    fetch(formspreeUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(finalData)
-    })
-    .then(response => {
-      if (response.ok) {
-        setStep(4);
-      } else {
-        alert("Something went wrong! Please try again.");
-      }
-    });
+    // Netlify forms will handle the submission
+    // You can add a success message or redirect here
+    setStep(4);
   };
 
   const renderStep = () => {
@@ -63,10 +47,10 @@ function ProjectWizard() {
           <motion.div key="step1" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="text-center">
             <h3 className="text-3xl font-bold mb-6">What kind of project do you have?</h3>
             <div className="space-y-4">
-              <button onClick={() => { setFormData({ ...formData, projectType: 'Custom Web App' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Custom Web App</button>
-              <button onClick={() => { setFormData({ ...formData, projectType: 'Business Website' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Business Website</button>
-              <button onClick={() => { setFormData({ ...formData, projectType: 'Personal Portfolio' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Personal Portfolio</button>
-              <button onClick={() => { setFormData({ ...formData, projectType: 'Other' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Other</button>
+              <button type="button" onClick={() => { setFormData({ ...formData, projectType: 'Custom Web App' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Custom Web App</button>
+              <button type="button" onClick={() => { setFormData({ ...formData, projectType: 'Business Website' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Business Website</button>
+              <button type="button" onClick={() => { setFormData({ ...formData, projectType: 'Personal Portfolio' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Personal Portfolio</button>
+              <button type="button" onClick={() => { setFormData({ ...formData, projectType: 'Other' }); handleNext(); }} className="w-full py-4 px-6 bg-gray-800 rounded-lg text-left hover:bg-gray-700 transition-colors duration-300">Other</button>
               {formData.projectType === 'Other' && (
                 <input type="text" name="otherProjectType" placeholder="Please specify..." value={formData.otherProjectType} onChange={handleChange} className="w-full bg-gray-700 rounded-lg p-3" required />
               )}
@@ -88,8 +72,8 @@ function ProjectWizard() {
               )}
             </div>
             <div className="mt-8 flex justify-between">
-              <motion.button onClick={handlePrev} className="px-6 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Previous</motion.button>
-              <motion.button onClick={handleNext} className="px-6 py-2 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Next</motion.button>
+              <motion.button type="button" onClick={handlePrev} className="px-6 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Previous</motion.button>
+              <motion.button type="button" onClick={handleNext} className="px-6 py-2 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Next</motion.button>
             </div>
           </motion.div>
         );
@@ -98,7 +82,15 @@ function ProjectWizard() {
           <motion.div key="step3" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="text-center">
             <h3 className="text-3xl font-bold mb-6">Almost done!</h3>
             <p className="text-lg text-gray-400 mb-6">Tell us about your project and contact details.</p>
-            <form onSubmit={handleSubmit} className="space-y-4 text-left">
+            <form name="project-wizard" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit} className="space-y-4 text-left">
+              {/* Netlify Hidden Fields */}
+              <input type="hidden" name="form-name" value="project-wizard" />
+              <input type="hidden" name="projectType" value={formData.projectType} />
+              <input type="hidden" name="features" value={formData.features.join(', ')} />
+              <div hidden>
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </div>
+
               <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
               <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="w-full bg-gray-800 rounded-lg p-3" required />
               <textarea name="message" placeholder="Tell us more about your project..." value={formData.message} onChange={handleChange} rows="4" className="w-full bg-gray-800 rounded-lg p-3" required></textarea>
@@ -106,7 +98,7 @@ function ProjectWizard() {
                 Submit Brief <FaArrowRight className="inline ml-2" />
               </motion.button>
             </form>
-            <motion.button onClick={handlePrev} className="mt-4 px-6 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Previous</motion.button>
+            <motion.button type="button" onClick={handlePrev} className="mt-4 px-6 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Previous</motion.button>
           </motion.div>
         );
       case 4:

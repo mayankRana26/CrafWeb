@@ -2,7 +2,6 @@ import React from 'react';
 import profileImage from '../assets/profile-photo.png';
 import { motion } from 'framer-motion';
 
-// Video, hero section के ऊपर होने के कारण main tag को section में बदल दिया गया है।
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -102,7 +101,7 @@ function Hero() {
               transition: { duration: 0.3 }
             }}
           >
-            <img src={profileImage} alt="Mayank Rana professional" className="w-full h-full object-cover" />
+            <img src={profileImage} alt="professional_image" className="w-full h-full object-cover" />
           </motion.div>
         </div>
       </main>

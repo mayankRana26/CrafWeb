@@ -14,34 +14,69 @@ const cardVariants = {
   }
 };
 
-// 1. 'githubLink' property removed from data
 const projectsData = [
   {
     title: "Real-time MERN Chat App",
     description: "A full-stack chat application with real-time messaging, user authentication, and a clean UI.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Socket.IO"],
+    tech: [
+      "Real-time Messaging",
+      "User Authentication",
+      "Clean UI",
+      "Group Chats",
+      "File Sharing"
+    ],
     imageUrl: "/Dochat-polished.png",
-    liveLink: "https://dochat-production.onrender.com",
   },
-  {
-    title: "Spotify Clone",
-    description: "A clone of the Spotify web player with real-time chatting, built with React, Vite, Tailwind CSS and socket.io.",
-    tech: ["React", "Vite", "Tailwind CSS", "GSAP","socket.io"],
-    imageUrl: "/spotify-polished.png",
-    liveLink: "https://spotify-clone-otux.onrender.com",
-  },
+  
   {
     title: "Portfolio",
-    description: " Apersonal brand website showcasing skills, projects, and freelancing services.",
-    tech: ["React", "Vite", "Tailwind CSS"],
+    description: "A personal brand website showcasing skills, projects, and freelancing services.",
+    tech: [
+      "Dynamic Animations",
+      "Responsive Design",
+      "Project Showcase",
+      "Contact Form"
+    ],
     imageUrl: "/portfolio-polished.png",
-    liveLink: "https://portfolio-mayank-1.netlify.app",
+  },
+  {
+    title: "Dashboard",
+    description: "A clean, professional dashboard for managing data.",
+    tech: [
+      "Data Visualization",
+      "User Management",
+      "Notification System",
+      "Responsive Design"
+    ],
+    imageUrl: "/Dashboard.png", 
+  },
+  {
+    title: "Hotel Booking Website",
+    description: "A modern platform for exploring and booking hotels.",
+    tech: [
+      "Property Listings",
+      "Online Booking",
+      "Review Management",
+      "Inquiry System"
+    ],
+    imageUrl: "/hotel.png", 
+  },
+  {
+    title: "Real Estate Website",
+    description: "A professional platform to explore and book properties.",
+    tech: [
+      "Property Listings",
+      "Online Booking",
+      "Inquiry System",
+      "Review Management"
+    ],
+    imageUrl: "/real-state.png", 
   }
 ];
 
 function Projects() {
   return (
-    <section className="bg-gray-900 text-white py-20 px-8 min-h-screen">
+    <section className="bg-gray-900 text-white py-20 px-8 min-h-screen" id="top">
       <div className="container mx-auto">
         <motion.h2
           className="text-4xl font-bold text-center mb-12"
@@ -58,32 +93,29 @@ function Projects() {
           variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         >
           {projectsData.map((project, index) => (
-            <motion.div key={index} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col" variants={cardVariants} whileHover={{ y: -10 }}>
+            <motion.a
+              key={index}
+              href="#top"
+              className="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col cursor-pointer"
+              variants={cardVariants}
+              whileHover={{ y: -10 }}
+            >
               <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover" />
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2">
                   {project.tech?.map((tech, i) => (
-                    <span key={i} className="bg-gray-700 text-sm px-3 py-1 rounded-full text-cyan-300">
+                    <span
+                      key={i}
+                      className="bg-gray-700 text-sm px-3 py-1 rounded-full text-cyan-300"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
-                {/* 2. GitHub button removed and parent div updated */}
-                <div className="mt-auto pt-4">
-                  <motion.a 
-                    href={project.liveLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="block w-full bg-cyan-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-cyan-400 transition-colors duration-300 text-center" 
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Live Demo
-                  </motion.a>
-                </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
       </div>

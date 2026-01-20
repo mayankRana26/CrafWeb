@@ -11,6 +11,7 @@ import MainSections from './components/MainSections';
 import ServicePage from './pages/ServicePage';
 import { services } from './data/ServiceData';
 import ScrollToTop from './components/ScrollToTop';
+import FAQ from './components/FAQ';
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
         </Routes>
         <MainSections services={services} />
       </main>
-      
+      <FAQ />
       <Footer />
     </div>
   );

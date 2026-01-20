@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import React, { useState } from "react";
+import { FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.2
-    }
-  }
+      staggerChildren: 0.2,
+    },
+  },
 };
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
-  
-  useEffect(() => {
-    emailjs.init("-i8foRykP2f1ROml4");
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,36 +31,33 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const serviceID = 'service_ib32gps';
-    const templateID = 'template_xcthj0q';
-
-    emailjs.send(serviceID, templateID, formData)
-      .then((response) => {
+    emailjs
+      .send(
+        "service_ib32gps",        // SERVICE ID
+        "template_xcthj0q",       // TEMPLATE ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "-i8foRykP2f1ROml4"       // PUBLIC KEY
+      )
+      .then(() => {
         setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-      }, (error) => {
-        alert('Something went wrong. Please try again.');
+        setFormData({ name: "", email: "", message: "" });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error 👉", error);
+        alert("Something went wrong. Please try again.");
+        setLoading(false);
       });
   };
 
-  const ThankYouMessage = () => (
-    <motion.div 
-      key="thank-you"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-center"
-    >
-      <h3 className="text-3xl font-bold mb-4">Thank you for contacting us!</h3>
-      <p className="text-lg text-gray-400">
-        We'll review your message and get back to you within 24 hours.
-      </p>
-    </motion.div>
-  );
-
   return (
-    <motion.section 
+    <motion.section
       className="bg-gray-900 text-white py-20 px-8 min-h-screen flex items-center justify-center"
       initial="initial"
       animate="animate"
@@ -67,117 +65,118 @@ function Contact() {
     >
       <div className="container mx-auto max-w-2xl">
 
-        <motion.p 
-          className="text-center text-lg text-gray-400 mb-8"
-          variants={fadeIn}
-        >
-          {submitted ? ' ' : 'Have a question or a project in mind? Feel free to reach out.'}
-        </motion.p>
-        
+        {!submitted && (
+          <motion.p
+            className="text-center text-lg text-gray-400 mb-8"
+            variants={fadeIn}
+          >
+            Have a question or a project in mind? Feel free to reach out.
+          </motion.p>
+        )}
+
         {submitted ? (
-          <ThankYouMessage />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              Thank you for contacting us!
+            </h3>
+            <p className="text-lg text-gray-400">
+              We'll get back to you within 24 hours.
+            </p>
+          </motion.div>
         ) : (
-          <motion.form 
-            name="contact"
-            method='POST' 
+          <motion.form
+            onSubmit={handleSubmit}
             className="space-y-6 mb-12"
             variants={stagger}
-            onSubmit={handleSubmit}
           >
             <motion.div variants={fadeIn}>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-gray-300">
                 Name
               </label>
               <input
                 type="text"
-                id="name"
                 name="name"
-                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white p-3 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
                 required
                 value={formData.name}
                 onChange={handleChange}
+                className="mt-1 w-full rounded-md bg-gray-800 border border-gray-700 p-3 text-white focus:border-cyan-500 focus:ring-cyan-500"
               />
             </motion.div>
+
             <motion.div variants={fadeIn}>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-gray-300">
                 Email
               </label>
               <input
                 type="email"
-                id="email"
                 name="email"
-                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white p-3 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
                 required
                 value={formData.email}
                 onChange={handleChange}
+                className="mt-1 w-full rounded-md bg-gray-800 border border-gray-700 p-3 text-white focus:border-cyan-500 focus:ring-cyan-500"
               />
             </motion.div>
+
             <motion.div variants={fadeIn}>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-gray-300">
                 Message
               </label>
               <textarea
-                id="message"
                 name="message"
                 rows="4"
-                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white p-3 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
                 required
                 value={formData.message}
                 onChange={handleChange}
-              ></textarea>
+                className="mt-1 w-full rounded-md bg-gray-800 border border-gray-700 p-3 text-white focus:border-cyan-500 focus:ring-cyan-500"
+              />
             </motion.div>
+
             <motion.button
               type="submit"
+              disabled={loading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-900 bg-cyan-500 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors"
-              variants={fadeIn}
+              className="w-full py-3 rounded-md text-gray-900 bg-cyan-500 hover:bg-cyan-400 transition font-semibold disabled:opacity-50"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </motion.button>
           </motion.form>
         )}
-        
-        {/* Social & Direct Contact Links Section */}
+
+        {/* Social Links */}
         <motion.div className="text-center" variants={fadeIn}>
-          <motion.p className="text-gray-400 mb-4">Or connect with Us directly on :</motion.p>
-          <motion.div className="flex justify-center space-x-6" variants={stagger}>
-            <motion.a 
+          <p className="text-gray-400 mb-4">Or connect with us directly:</p>
+          <div className="flex justify-center gap-6">
+            <a
               href="https://www.instagram.com/crafweb.1"
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-cyan-500 hover:text-cyan-400 transition-colors text-xl flex items-center space-x-2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              variants={fadeIn}
+              target="_blank"
+              rel="noreferrer"
+              className="text-cyan-500 hover:text-cyan-400 flex items-center gap-2"
             >
-              <FaInstagram />
-              <span>Instagram</span>
-            </motion.a>
-            <motion.a 
+              <FaInstagram /> Instagram
+            </a>
+            <a
               href="https://wa.me/917465065665"
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-cyan-500 hover:text-cyan-400 transition-colors text-xl flex items-center space-x-2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              variants={fadeIn}
+              target="_blank"
+              rel="noreferrer"
+              className="text-cyan-500 hover:text-cyan-400 flex items-center gap-2"
             >
-              <FaWhatsapp />
-              <span>WhatsApp</span>
-            </motion.a>
-            <motion.a 
+              <FaWhatsapp /> WhatsApp
+            </a>
+            <a
               href="mailto:crafweb.sites@gmail.com"
-              className="text-cyan-500 hover:text-cyan-400 transition-colors text-xl flex items-center space-x-2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              variants={fadeIn}
+              className="text-cyan-500 hover:text-cyan-400 flex items-center gap-2"
             >
-              <FaEnvelope />
-              <span>Email</span>
-            </motion.a>
-          </motion.div>
+              <FaEnvelope /> Email
+            </a>
+          </div>
         </motion.div>
+
       </div>
     </motion.section>
   );

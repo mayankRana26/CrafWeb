@@ -54,7 +54,7 @@ const projectsData = [
     title: "Hotel Booking Website",
     description: "A modern platform for exploring and booking hotels.",
     tech: [
-      "Property Listings",
+      "Food-delivery Integration",
       "Online Booking",
       "Review Management",
       "Inquiry System"
@@ -71,6 +71,18 @@ const projectsData = [
       "Review Management"
     ],
     imageUrl: "/real-state.png", 
+  },
+  {
+    title: "Yoga Website",
+    description: "A professional Yoga website to book and manage yoga sessions.",
+    tech: [
+      "Booking System",
+      "Class Schedules",
+      "Inquiry System",
+      "Review Management"
+    ],
+    imageUrl: "/divine-for-crafweb.png", 
+    // divine-for-crafweb
   }
 ];
 

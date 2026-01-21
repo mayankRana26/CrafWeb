@@ -6,6 +6,7 @@ import Popup from '../components/Popup';
 import WhyChooseUs from '../components/WhyChooseUs';
 import ScrollToTopArrow from '../components/ScrollToTopArrow';
 import Milestones from '../components/Milestones';
+import TeamMessage from '../components/TeamMessage';
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <WhyChooseUs />
       <Testimonials />
       <Milestones />
+      <TeamMessage />
       <Popup />
       <ScrollToTopArrow />
     </>

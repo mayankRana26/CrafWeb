@@ -37,9 +37,9 @@ function App() {
             />
           ))}
         </Routes>
+      <FAQ />
         <MainSections services={services} />
       </main>
-      <FAQ />
       <Footer />
     </div>
   );

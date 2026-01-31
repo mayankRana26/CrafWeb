@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { services } from '../data/ServiceData'; // Ye data neeche diya gaya hai
+import { services } from '../data/ServiceData';
 import { Link } from 'react-router-dom';
 
 const cardVariants = {

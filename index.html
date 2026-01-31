@@ -1,18 +1,74 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Basic -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/webp" href="/logo-test.webp" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NN3KLE81C1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NN3KLE81C1');
-  </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CrafWeb </title>
+
+    <!-- Title & SEO -->
+    <title>CrafWeb | Web Design & Development Agency</title>
+    <meta
+      name="description"
+      content="CrafWeb is a professional web design and development agency helping businesses grow online with modern, fast, and SEO-friendly websites."
+    />
+    <meta
+      name="keywords"
+      content="CrafWeb, web design, web development, website agency, business website, react website"
+    />
+    <meta name="author" content="CrafWeb" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="/logo-test.webp" />
+
+    <!-- Open Graph (Social Media Preview) -->
+    <meta property="og:title" content="CrafWeb | Web Design & Development Agency" />
+    <meta
+      property="og:description"
+      content="We turn your ideas into powerful websites. Let’s grow together with CrafWeb."
+    />
+    <meta property="og:url" content="https://crafweb.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://crafweb.com/logo-test.webp" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NN3KLE81C1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NN3KLE81C1');
+    </script>
+
+    <!-- 🔥 SEO SCHEMA (Organization) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CrafWeb",
+        "url": "https://crafweb.com",
+        "logo": "https://crafweb.com/logo-test.webp",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-7465065665",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Hindi"]
+        },
+        "sameAs": []
+      }
+    </script>
+
+    <!-- 🔥 SEO SCHEMA (Website) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CrafWeb",
+        "url": "https://crafweb.com"
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

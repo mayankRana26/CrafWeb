@@ -153,7 +153,7 @@ function Contact() {
           <p className="text-gray-400 mb-4">Or connect with us directly:</p>
           <div className="flex justify-center gap-6">
             <a
-              href="https://www.instagram.com/crafweb.1"
+              href="https://www.instagram.com/crafweb"
               target="_blank"
               rel="noreferrer"
               className="text-cyan-500 hover:text-cyan-400 flex items-center gap-2"

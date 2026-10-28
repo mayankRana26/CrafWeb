@@ -13,7 +13,7 @@ function Footer() {
           {/* Left: Social Media Icons */}
           <div className="flex space-x-6">
             <a 
-              href="https://www.instagram.com/crafweb.1"
+              href="https://www.instagram.com/crafweb"
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-cyan-400 transition-colors"

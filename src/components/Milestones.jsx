@@ -20,7 +20,7 @@ const Counter = ({ value, duration = 2 }) => {
 
 const milestonesData = [
   { image: "/twenty-dev.png", stat: 20, suffix: "+", title: "Developers on Board" },
-  { image: "/fifty-Project.png", stat: 50, suffix: "+", title: "Projects Delivered" },
+  { image: "/one-fifty-Project.png", stat: 150, suffix: "+", title: "Projects Delivered" },
   { image: "/setisfied-client.png", stat: 100, suffix: "%", title: "Satisfied Clients" }
 ];
 

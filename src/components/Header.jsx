@@ -89,6 +89,8 @@ function Header() {
         
         <Link to="/projects" className={getLinkClass('/projects')}>Work</Link>
         <Link to="/contact" className={getLinkClass('/contact')}>Contact</Link>
+        <Link to="/design" className={getLinkClass('/design')}>Design</Link>
+
       </nav>
 
       {/* Mobile Menu (Isse md tak hide rakhe) */}

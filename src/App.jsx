@@ -12,6 +12,7 @@ import ServicePage from './pages/ServicePage';
 import { services } from './data/ServiceData';
 import ScrollToTop from './components/ScrollToTop';
 import FAQ from './components/FAQ';
+import Design from './pages/Design';  // Import the Design component
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/hire-me" element={<ProjectWizard />} />
+          <Route path="/design" element={<Design />} /> 
 
           {/* Dynamic routes for each service */}
           {services.map((service, index) => (
